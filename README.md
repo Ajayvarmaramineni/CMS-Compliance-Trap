@@ -12,10 +12,10 @@ CMS-HeartFailure-Readmission-Analysis/
 │
 ├── data/
 │   └── processed/
-│       └── team7_master_dataset.csv   
+│       └── cleaned_dataset.csv   
 │
 ├── notebooks/
-│   └── BUS595_team7.ipynb            
+│   └── cleaned_data.ipynb            
 │
 └── README.md
 ```
