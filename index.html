@@ -377,6 +377,137 @@ footer strong{color:#8BAAC4}
 
 /* Also fix existing conclusion-box to not conflict */
 .conclusion-box { display:none; }
+
+/* ════════════════════════════════════════════════════
+   MOBILE RESPONSIVE  -  max-width: 768px
+   ════════════════════════════════════════════════════ */
+
+/* Hamburger (hidden on desktop) */
+.nav-toggle { display:none; }
+.nav-hamburger {
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  cursor:pointer;
+  padding:8px;
+  z-index:1001;
+}
+.nav-hamburger span {
+  display:block;
+  width:24px;
+  height:2px;
+  background:#fff;
+  border-radius:2px;
+  transition:transform .3s, opacity .3s;
+}
+.nav-toggle:checked ~ .nav-hamburger span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.nav-toggle:checked ~ .nav-hamburger span:nth-child(2) { opacity:0; }
+.nav-toggle:checked ~ .nav-hamburger span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+@media(max-width:768px) {
+
+  /* ── Nav ── */
+  #nav { padding:0 1.2rem; position:relative; }
+  #nav .logo img { height:36px !important; }
+  #nav .logo em { font-size:.8rem !important; }
+  .nav-hamburger { display:flex; }
+  #nav-links {
+    display:none;
+    position:absolute;
+    top:54px; left:0; right:0;
+    background:#0D1525;
+    flex-direction:column;
+    padding:1rem 1.5rem;
+    gap:.2rem;
+    box-shadow:0 8px 24px rgba(0,0,0,.5);
+    z-index:1000;
+  }
+  .nav-toggle:checked ~ #nav-links { display:flex; }
+  #nav-links li a {
+    display:block;
+    padding:.65rem 0;
+    font-size:.95rem;
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  #nav-links li:last-child a { border-bottom:none; }
+
+  /* ── Global ── */
+  .container { padding:0 1.2rem; }
+  .sec-title { font-size:1.8rem !important; }
+  .sec-desc { font-size:.85rem; }
+
+  /* ── Hero ── */
+  #hero { padding:5rem 1.2rem 3rem; text-align:center; }
+  .hero-title { font-size:2.6rem !important; }
+  .hero-sub { font-size:.9rem; }
+  .hero-cta { flex-direction:column; align-items:center; gap:.7rem; }
+
+  /* ── Poster ── */
+  #poster { padding:3rem 1.2rem; }
+  .poster-embed { height:280px !important; }
+  .poster-card { border-radius:10px; }
+
+  /* ── Findings ── */
+  #findings { padding:3rem 1.2rem; }
+  .rq-grid { grid-template-columns:1fr !important; }
+  .rq-big { font-size:2.8rem !important; }
+
+  /* ── Explorer ── */
+  #explorer { padding:3rem 1.2rem; }
+  .hosp-filter { flex-direction:column; gap:.7rem; }
+  .hosp-filter input, .hosp-filter select { width:100%; box-sizing:border-box; }
+  .hosp-grid { grid-template-columns:1fr !important; max-height:none; }
+  .metrics-grid { grid-template-columns:repeat(2,1fr) !important; }
+  .post-bars { gap:.5rem; }
+
+  /* ── Methodology ── */
+  #methodology { padding:3rem 1.2rem; }
+  .mth-stats { grid-template-columns:repeat(2,1fr) !important; flex-wrap:wrap; }
+  .mth-pipeline { flex-direction:column !important; border-radius:10px; }
+  .mth-pipe { border-right:none !important; border-bottom:1px solid rgba(255,255,255,.08); }
+  .mth-pipe:last-child { border-bottom:none; }
+  .mth-models { grid-template-columns:1fr !important; }
+  .mth-rq-grid { grid-template-columns:1fr !important; }
+  .mth-chips { gap:.4rem; }
+  .mth-atten-keys { flex-direction:column; gap:.8rem; }
+
+  /* ── Charts ── */
+  #charts { padding:3rem 1.2rem; }
+  .chart-tabs { flex-wrap:wrap; gap:.4rem; }
+  .chart-tab { font-size:.75rem; padding:.4rem .8rem; }
+
+  /* ── Policy ── */
+  #policy { padding:3rem 1.2rem; }
+  .pol-recs { grid-template-columns:1fr !important; }
+  .pol-future-grid { grid-template-columns:1fr !important; }
+  .pol-conclusion { padding:1.5rem; }
+  .pol-conclusion-grid { grid-template-columns:1fr !important; }
+  .pol-conclusion-text h3 { font-size:1.1rem; }
+  .pol-punchline { padding:2.5rem 1.2rem; }
+  .pol-punchline-text { font-size:1.6rem !important; }
+  .pol-punchline-cta { flex-direction:column; align-items:center; }
+
+  /* ── Hospital modal ── */
+  .hosp-modal-wrap {
+    padding:.5rem !important;
+    align-items:flex-end !important;
+  }
+  .hosp-modal {
+    border-radius:16px 16px 0 0 !important;
+    max-height:90vh;
+    overflow-y:auto;
+    width:100% !important;
+  }
+}
+
+@media(max-width:420px) {
+  .hero-title { font-size:2rem !important; }
+  .mth-stats { grid-template-columns:1fr !important; }
+  .metrics-grid { grid-template-columns:1fr !important; }
+  .pol-punchline-text { font-size:1.3rem !important; }
+  .rq-big { font-size:2.2rem !important; }
+}
 </style>
 </head>
 <body>
@@ -387,12 +518,18 @@ footer strong{color:#8BAAC4}
     <img src="images/WPI-logo.png" alt="WPI Logo" style="height:108px;width:auto;flex-shrink:0">
     <em style="color:#FFB3BA;font-style:normal;font-size:.95rem;font-weight:700;white-space:nowrap">The Compliance Trap</em>
   </div>
-  <ul>
-    <li><a href="#hero">Overview</a></li>
-    <li><a href="#poster">Poster</a></li><li><a href="#findings">Findings</a></li>
-    <li><a href="#explorer">Explorer</a></li>
-    <li><a href="#methodology">Methods</a></li><li><a href="#charts">Charts</a></li>
-    <li><a href="#policy">Policy</a></li>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <label for="nav-toggle" class="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </label>
+  <ul id="nav-links">
+    <li><a href="#hero" onclick="document.getElementById('nav-toggle').checked=false">Overview</a></li>
+    <li><a href="#poster" onclick="document.getElementById('nav-toggle').checked=false">Poster</a></li>
+    <li><a href="#findings" onclick="document.getElementById('nav-toggle').checked=false">Findings</a></li>
+    <li><a href="#explorer" onclick="document.getElementById('nav-toggle').checked=false">Explorer</a></li>
+    <li><a href="#methodology" onclick="document.getElementById('nav-toggle').checked=false">Methods</a></li>
+    <li><a href="#charts" onclick="document.getElementById('nav-toggle').checked=false">Charts</a></li>
+    <li><a href="#policy" onclick="document.getElementById('nav-toggle').checked=false">Policy</a></li>
   </ul>
 </nav>
 
