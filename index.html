@@ -383,7 +383,6 @@ footer strong{color:#8BAAC4}
    ════════════════════════════════════════════════════ */
 
 /* Hamburger - hidden on desktop */
-.nav-toggle { display:none; }
 .nav-hamburger {
   display:none;
   flex-direction:column;
@@ -391,6 +390,8 @@ footer strong{color:#8BAAC4}
   gap:5px;
   cursor:pointer;
   padding:8px;
+  background:none;
+  border:none;
   z-index:1100;
   flex-shrink:0;
 }
@@ -402,9 +403,9 @@ footer strong{color:#8BAAC4}
   border-radius:2px;
   transition:transform .3s,opacity .3s;
 }
-.nav-toggle:checked ~ .nav-hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav-toggle:checked ~ .nav-hamburger span:nth-child(2){opacity:0}
-.nav-toggle:checked ~ .nav-hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 @media(max-width:768px){
 
@@ -425,7 +426,7 @@ footer strong{color:#8BAAC4}
     z-index:1050;
     border-top:1px solid rgba(255,255,255,.08);
   }
-  .nav-toggle:checked ~ ul{display:flex}
+  #nav ul.nav-open{display:flex !important}
   #nav ul li a{
     display:block;
     padding:.7rem 0;
@@ -519,18 +520,17 @@ footer strong{color:#8BAAC4}
     <img src="images/WPI-logo.png" alt="WPI Logo" style="height:108px;width:auto;flex-shrink:0">
     <em style="color:#FFB3BA;font-style:normal;font-size:.95rem;font-weight:700;white-space:nowrap">The Compliance Trap</em>
   </div>
-  <input type="checkbox" id="nav-toggle" class="nav-toggle">
-  <label for="nav-toggle" class="nav-hamburger" aria-label="Menu">
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
     <span></span><span></span><span></span>
-  </label>
+  </button>
   <ul id="nav-links">
-    <li><a href="#hero" onclick="document.getElementById('nav-toggle').checked=false">Overview</a></li>
-    <li><a href="#poster" onclick="document.getElementById('nav-toggle').checked=false">Poster</a></li>
-    <li><a href="#findings" onclick="document.getElementById('nav-toggle').checked=false">Findings</a></li>
-    <li><a href="#explorer" onclick="document.getElementById('nav-toggle').checked=false">Explorer</a></li>
-    <li><a href="#methodology" onclick="document.getElementById('nav-toggle').checked=false">Methods</a></li>
-    <li><a href="#charts" onclick="document.getElementById('nav-toggle').checked=false">Charts</a></li>
-    <li><a href="#policy" onclick="document.getElementById('nav-toggle').checked=false">Policy</a></li>
+    <li><a href="#hero">Overview</a></li>
+    <li><a href="#poster">Poster</a></li>
+    <li><a href="#findings">Findings</a></li>
+    <li><a href="#explorer">Explorer</a></li>
+    <li><a href="#methodology">Methods</a></li>
+    <li><a href="#charts">Charts</a></li>
+    <li><a href="#policy">Policy</a></li>
   </ul>
 </nav>
 
@@ -1242,6 +1242,22 @@ function presentPoster(){
 }
 
 
+
+function toggleMobileNav(){
+  var ul = document.getElementById('nav-links');
+  var btn = document.getElementById('nav-hamburger');
+  ul.classList.toggle('nav-open');
+  btn.classList.toggle('open');
+}
+// Close menu when a nav link is tapped
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('#nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      document.getElementById('nav-links').classList.remove('nav-open');
+      document.getElementById('nav-hamburger').classList.remove('open');
+    });
+  });
+});
 </script>
 </body>
 </html>
