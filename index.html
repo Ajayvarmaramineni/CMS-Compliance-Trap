@@ -1110,7 +1110,7 @@ function _scalePosterIframe(){
     // PDF viewer adds ~11% internal margin (gray padding around page).
     // Scale up by 1/0.89 ≈ 1.12 so the gray is pushed off-screen.
     // overflow:hidden on the wrapper clips the sides cleanly.
-    iframe.style.transform='scale(1.13)';
+    iframe.style.transform='scale(1.13)';iframe.style.transformOrigin='top center';
   } else {
     iframe.style.transform='';
   }
