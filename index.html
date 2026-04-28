@@ -569,7 +569,7 @@ footer strong{color:#8BAAC4}
   <div class="container">
     <p class="sec-label">Research Poster</p>
     <h2 class="sec-title">The Compliance Trap</h2>
-    <p class="sec-desc">Full academic poster - click Present to go fullscreen for your presentation session.</p>
+    
     <div class="poster-card">
       <div id="poster-fs-wrap">
         <div class="poster-toolbar">
@@ -586,7 +586,7 @@ footer strong{color:#8BAAC4}
         </iframe>
       </div>
     </div>
-    <p class="poster-hint">Press ESC to exit fullscreen and return to the site</p>
+    
   </div>
 </section>
 
@@ -595,7 +595,7 @@ footer strong{color:#8BAAC4}
   <div class="container">
     <p class="sec-label">Research Findings</p>
     <h2 class="sec-title">Three ways the system misfires</h2>
-    <p class="sec-desc">CMS runs three concurrent penalty programs to drive quality improvement. Our analysis of 2,833 acute care hospitals reveals each program creates a distinct failure mode.</p>
+    <p class="sec-desc">Three programs. Three failure modes. One system.</p>
 
     <div class="rq-grid">
 
@@ -662,7 +662,7 @@ footer strong{color:#8BAAC4}
   <div class="container">
     <p class="sec-label">Hospital Explorer</p>
     <h2 class="sec-title">Look up any hospital</h2>
-    <p class="sec-desc">Search all 2,833 acute care hospitals in the dataset. Filter by state, penalty status, or risk category - then click any card for the full metric profile.</p>
+    <p class="sec-desc">2,833 U.S. acute care hospitals. Filter by state, penalty status, or ownership type.</p>
 
     <div class="filter-bar">
       <input type="text" id="srch" placeholder="Search hospital name…" oninput="filterHospitals()">
@@ -866,7 +866,7 @@ footer strong{color:#8BAAC4}
   <div class="container">
     <p class="sec-label">Data Visualizations</p>
     <h2 class="sec-title">The numbers behind the findings</h2>
-    <p class="sec-desc">Charts from the full FY2026 CMS dataset analysis - click each tab to explore the three research questions.</p>
+    <p class="sec-desc">FY2026 CMS dataset. Select a research question to view the analysis.</p>
 
     <div class="tab-bar">
       <button class="tab-btn cr active" onclick="switchTab('t1',this)">RQ1 - Infection Illusion</button>
@@ -1246,14 +1246,23 @@ function presentPoster(){
 function toggleMobileNav(){
   var ul = document.getElementById('nav-links');
   var btn = document.getElementById('nav-hamburger');
-  ul.classList.toggle('nav-open');
-  btn.classList.toggle('open');
+  var isOpen = ul.getAttribute('data-open') === '1';
+  if(isOpen){
+    ul.style.cssText = '';
+    ul.removeAttribute('data-open');
+    btn.classList.remove('open');
+  } else {
+    ul.style.cssText = 'display:flex !important;position:fixed;top:54px;left:0;right:0;flex-direction:column;background:#0D1525;padding:1rem 1.5rem 1.5rem;gap:0;box-shadow:0 8px 32px rgba(0,0,0,.7);z-index:9999;border-top:1px solid rgba(255,255,255,.1);list-style:none;margin:0;';
+    ul.setAttribute('data-open','1');
+    btn.classList.add('open');
+  }
 }
-// Close menu when a nav link is tapped
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded',function(){
   document.querySelectorAll('#nav-links a').forEach(function(a){
-    a.addEventListener('click', function(){
-      document.getElementById('nav-links').classList.remove('nav-open');
+    a.addEventListener('click',function(){
+      var ul=document.getElementById('nav-links');
+      ul.style.cssText='';
+      ul.removeAttribute('data-open');
       document.getElementById('nav-hamburger').classList.remove('open');
     });
   });
