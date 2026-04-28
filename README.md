@@ -66,17 +66,17 @@ graph LR
 
 ```mermaid
 quadrantChart
-    title HAI Score vs Mortality Rate (n = 2,833)
+    title HAI Score vs Mortality Rate (n = 2833)
     x-axis Low HAI Score --> High HAI Score
     y-axis Low Mortality --> High Mortality
-    quadrant-1 High Risk, Penalized
-    quadrant-2 High Risk, Not Penalized
-    quadrant-3 Low Risk, Not Penalized
-    quadrant-4 Low Risk, Penalized
-    Blind Spot Hospitals: [0.22, 0.73] radius: 0.22
-    Correctly Flagged: [0.72, 0.68] radius: 0.12
-    Safe & Penalized: [0.75, 0.28] radius: 0.10
-    Safe & Clear: [0.25, 0.28] radius: 0.18
+    quadrant-1 High Risk Penalized
+    quadrant-2 High Risk Not Penalized
+    quadrant-3 Low Risk Not Penalized
+    quadrant-4 Low Risk Penalized
+    Blind Spot 550 hospitals: [0.22, 0.73]
+    Correctly Flagged: [0.72, 0.68]
+    Safe but Penalized: [0.75, 0.28]
+    Safe and Clear: [0.25, 0.28]
 ```
 
 <details>
@@ -109,10 +109,11 @@ Detection failure: chi-square test on HAC penalty status across quadrants
 
 ```mermaid
 xychart-beta
-    title "EDAC Days by Penalty Status (Heart Failure)"
+    title "EDAC Days - Heart Failure (Penalized vs Not)"
     x-axis ["Not Penalized", "HRRP Penalized"]
-    y-axis "Excess Days in Acute Care (EDAC)" 0 --> 120
+    y-axis "Excess Days in Acute Care" 80 --> 120
     bar [96, 114]
+    line [96, 114]
 ```
 
 <details>
