@@ -49,6 +49,17 @@ const projects = [
     external: true,
     featured: false,
   },
+  {
+    id: "05",
+    title: "The Compliance Trap",
+    category: "Healthcare Research",
+    stack: ["Python", "OLS Regression", "statsmodels", "Chart.js"],
+    description:
+      "WPI capstone: cross-sectional regression across 2,833 U.S. hospitals and 11 CMS datasets. Identified three systemic failure modes in federal penalty programs, all significant at p < 0.001. Includes a live interactive hospital explorer.",
+    href: "https://ajayvarmaramineni.github.io/CMS-Compliance-Trap/",
+    external: true,
+    featured: true,
+  },
 ];
 
 export default function FeaturedWork() {

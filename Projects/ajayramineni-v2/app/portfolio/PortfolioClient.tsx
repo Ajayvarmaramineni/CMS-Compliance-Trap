@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Github } from "lucide-react";
 
-const categories = ["All", "Machine Learning", "Business Intelligence", "Web", "Strategy"];
+const categories = ["All", "Machine Learning", "Business Intelligence", "Web", "Strategy", "Research"];
 
 const projects = [
   {
@@ -72,6 +72,17 @@ const projects = [
     outcome: "75% conversion · 30+ partnerships",
     github: null,
     live: null,
+  },
+  {
+    id: "07",
+    title: "The Compliance Trap",
+    category: "Research",
+    stack: ["Python", "statsmodels", "OLS Regression", "Pandas", "Chart.js", "HTML/CSS/JS"],
+    description:
+      "WPI BUS596 capstone. Cross-sectional OLS regression across 11 merged CMS datasets and 2,833 U.S. acute care hospitals. Identified three systemic failure modes in CMS penalty programs: infection metric blind spots, readmission displacement, and multi-program convergence. Includes an interactive hospital explorer and live research site.",
+    outcome: "2,833 hospitals · 3 policy findings · p < 0.001",
+    github: "https://github.com/Ajayvarmaramineni/CMS-Compliance-Trap",
+    live: "https://ajayvarmaramineni.github.io/CMS-Compliance-Trap/",
   },
 ];
 
